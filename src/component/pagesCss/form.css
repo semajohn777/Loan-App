@@ -1,0 +1,81 @@
+.Form_page{
+    width: 70%;
+    margin:3em auto;
+    padding: 2em;
+}
+
+.Form_page div label{
+    padding-top: 1em;
+    font-size: 1.1em;
+}
+.sign_inp{
+    width: 90%;
+    height: 3em;
+    border:1px #000 solid;
+    color: #000;
+    font-size: 1.1em;
+    padding: 0 1em;
+    border-radius: .3em;
+}
+.sign_inp:focus{
+    background-color: #82fcb1;
+}
+.name_inp{
+    display: grid;
+    grid-template-columns: 52% 52%;
+}
+.email{
+    width: 99%;
+}
+.sign_btn{
+    width: 20%;
+    margin-top: .6em;
+    background-color: #04b749;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: .3em 0;
+}
+.sign_Up_line{
+   border: 1px #fff solid;
+}
+
+/* sign */
+.Form_page_div{
+    width: 50%;
+}
+/* .sign_form_increase{
+    width: 98%;
+} */
+@media screen and (max-width:1024px) {
+    .sign_btn{
+    width: 40%; 
+}
+.Form_page_div{
+    width: 50%;
+}
+.Form_page{
+    width: 85%;
+    margin:3em auto;
+    padding: 2em;
+}
+
+}
+@media screen and (max-width:600px) {
+    .sign_btn{
+    width: 95%;
+}
+.Form_page_div{
+    width: 95%;
+}
+.sign_inp{
+    width: 95%;
+}
+.name_inp{
+    display: block;
+}
+.email{
+    width: 95%;
+}
+}
+

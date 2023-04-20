@@ -1,0 +1,22 @@
+.footer{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5em;
+}
+@media screen and (max-width: 1024px) {
+    .portfolio_link{
+        font-size: .8em;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .portfolio_link{
+        font-size: 1em;
+    }
+    
+}
+@media screen and (max-width: 600px) {
+    .footer{
+        grid-template-columns: 1fr;
+    }
+}

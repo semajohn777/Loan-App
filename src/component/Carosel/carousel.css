@@ -1,0 +1,45 @@
+.d-block{
+    width: 100%;
+    height: 80vh;
+    filter: contrast(150%);
+}
+.carousel-control-next-icon{
+    position: absolute;
+right: 0;
+}
+.carousel-control-prev-icon{
+    position: absolute;
+left: 0;
+}
+.Cheack{
+    position: absolute;
+    bottom: 2em;
+}
+.Cheack h1{
+    color:#EC2AD9;
+}
+.carousel-indicators .active{
+    background-color:#04b749 ;
+   
+}
+.carousel-indicators button{
+    border: none;
+    border-top: none;
+}
+button{
+   border: none;
+    border-top: none;  
+    box-shadow: none;
+    border-radius: none;
+}
+
+@media screen and (max-width:600px) {
+    .Cheack h1{
+  font-size: 3em;
+}
+.d-block{
+ 
+    height: 70vh;
+   
+}
+}
