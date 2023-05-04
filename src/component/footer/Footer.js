@@ -6,15 +6,18 @@ import whatapp from '../images/what image.png'
 import email from '../images/Email box image.png'
 import socialMedia from '../images/social media.png'
 import contrast from '../images/contrast.png'
-
+import { BiLaptop } from 'react-icons/bi'
 import './footer.css'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
     <footer className="bg-dark text-white pt-4 py-2">
       <Container className="footer">
         <div>
-          <img src={logo} alt="website Logo" width="120" />
+          <Link to="/">
+            <img src={logo} alt="website Logo" width="120" />
+          </Link>
           <p className="text-white">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo,
             voluptate. Rem tenetur debitis repellendus at veritatis ducimus
@@ -23,7 +26,10 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <h2>About Us</h2>
+          <Link to="/about" style={{ textDecoration: 'none' }}>
+            <h2>About Us</h2>
+          </Link>
+
           <p className="text-white">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Consequuntur molestias modi eum doloribus magni cupiditate
@@ -47,7 +53,7 @@ const Footer = () => {
             <span className="text-white">johnagbudumhe12@gmail.com</span>
           </div>
           <div className="mt-1 ms-2">
-            <img width="35" src={contrast} alt="email" />
+            <BiLaptop size="2em" />
             <span className="text-white ms-2 portfolio_link">
               https://portfolio-app-777.netlify.app/
             </span>

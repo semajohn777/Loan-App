@@ -1,3 +1,4 @@
+
 .abt_flex{
     display: flex;
     justify-content: center;
@@ -9,7 +10,7 @@
 }
 .brown_div{
     background-color: #85117a;
-    padding: .5em;
+    padding: 1.5em 2em;
 }
 .abt_header{
     color: #04b749;
@@ -63,6 +64,16 @@ font-weight: bold;
     /* inset: 0; */
     left: 43%;
     
+}
+@media screen and (max-width:1024px) {
+    .abt_flex{
+    flex-direction: column-reverse;
+}
+.column_reverse{
+    display: flex;
+    flex-direction: column;
+}
+
 }
 @media screen and (max-width:600px) {
     .abt_flex{

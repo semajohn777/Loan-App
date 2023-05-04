@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import AOS from 'aos'
 import 'aos/dist/aos.css' // You can also use <link> for styles
+
+import 'react-toastify/dist/ReactToastify.css'
 // ..
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
@@ -13,7 +15,10 @@ import Signup from './pages/Signup'
 import SignIn from './pages/SignIn'
 import Business from './pages/Business'
 import PersonalLoan from './pages/PersonalLoan'
-import CarLoan from './pages/CarLoan'
+import LoanCalculator from './pages/LoanCalculator'
+// import Calculator from './utilis/Calculator'
+import Toastify from './utilis/Toastify'
+import ErrorPath from './pages/ErrorPath'
 
 // import Navbar from './component/Navbar';
 AOS.init()
@@ -29,7 +34,9 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/personal" element={<PersonalLoan />} />
-        <Route path="/car" element={<CarLoan />} />
+        <Route path="/calculator" element={<LoanCalculator />} />
+        <Route path="/toast" element={<Toastify />} />
+        <Route path="*" element={<ErrorPath />} />
       </Routes>
     </BrowserRouter>
   )

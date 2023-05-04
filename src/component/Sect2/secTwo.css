@@ -23,6 +23,7 @@
     width: 9rem;
     background-color: #04b749;
     padding: .8rem;
+    
 }
 .secTwo_subSec_grid h1{
     color: #04b749;
@@ -41,10 +42,17 @@
     align-items: center;
    }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width:800px) {
    .secTwo_grid{
     grid-template-columns: 1fr;
    }
+   .secTwo_subSec_grid img{
+    width: 10rem;
+ 
+} 
+}
+@media screen and (max-width: 600px) {
+   
    .secTwo_subSec_grid{
     flex-direction: column;
          
@@ -134,7 +142,7 @@
 }
 .secFour_div_colour_green{
     background-color: #04b749;
-    height: 20vh;
+    /* height: 20vh; */
     padding: 1em;
     position: absolute;
     width: 70%;
@@ -149,7 +157,8 @@
         /* box-shadow: 3px 5px 2px rgba(0, 0, 0, 0.5); */
 
     justify-content: center;
-    padding-top: 2em;
+    /* padding-top: 2em; */
+    margin: 2.5em .4em;
     
 }
 .secFour_div_colour_green form input{
@@ -178,14 +187,11 @@
     object-position: center;
     
 }
+
 @media screen and (max-width: 1024px) {
     .secFour_div_colour_green{
-        bottom: 6em;
+        /* bottom: 4em; */
     left: 10em;
-    height: 15vh;
-    }
-    .secFour_div_colour_green form{
-        margin-top: 1em;
     }
     .secFour_div_colour_one{
     height: 15vh;
@@ -193,14 +199,20 @@
 .secFour_div_colour_two{
     height: 15vh;
 }
-
+.secFour_div_colour_green form button{
+    width: 20%;
+}
+.secFour_div_colour_green form{
+    margin: 2em .4em;
+    
+}
      
 }
 @media screen and (max-width: 768px) {
      .secFour_div_colour_green{
-        bottom: 4em;
+      
     left: 4.5em;
-    height: 15vh;
+    /* height: 15vh; */
    width: 80%;
     }
  .secFour_div_colour_green form input{
@@ -212,12 +224,13 @@
         border-radius:0 .4em   .4em 0;
 }
  .secFour_div_colour_green form{
-        margin-top: 1em;
+        margin: 1.5em 0em;
         padding: .8em;
        
     }
     .secFour_div_colour_green form input{
  height: 2rem;
+ 
     }
       .secFour_div_colour_green form button{
  height: 2rem;
@@ -225,17 +238,18 @@
     .secFour_div_colour_green form button img{
         width: 2.5em;
     }
+
 }
 @media screen and (max-width: 600px) {
      .secFour_div_colour_green{
-        bottom: 3em;
+    
     left: 1em;
-    height: 15vh;
+  padding: 0;
    width: 90%;
     }
 
  .secFour_div_colour_green form{
-        margin-top: 0;
+        /* margin-top: .5em; */
         padding: .8em;
        
     }

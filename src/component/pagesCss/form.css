@@ -5,12 +5,12 @@
 }
 
 .Form_page div label{
-    padding-top: 1em;
+    padding-top: .8em;
     font-size: 1.1em;
 }
 .sign_inp{
     width: 90%;
-    height: 3em;
+    height: 2.5em;
     border:1px #000 solid;
     color: #000;
     font-size: 1.1em;
@@ -35,6 +35,7 @@
     font-size: 1.5em;
     font-weight: bold;
     padding: .3em 0;
+    box-shadow: 3px 5px 3px rgba(0,0, 0, 0.5);
 }
 .sign_Up_line{
    border: 1px #fff solid;
@@ -44,9 +45,22 @@
 .Form_page_div{
     width: 50%;
 }
-/* .sign_form_increase{
-    width: 98%;
-} */
+.Increase_btn{
+    width: 99%;
+   display: flex;
+   justify-content: space-between;
+}
+.icons_ctrl{
+    position: relative;
+}
+.icons_ctrl span{
+    margin-left: -2em;
+    z-index: 2;
+}
+.icons_ctrl span *{
+    color: #04b749;
+   cursor: pointer;
+}
 @media screen and (max-width:1024px) {
     .sign_btn{
     width: 40%; 

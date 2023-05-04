@@ -82,24 +82,13 @@ const NavBar = () => {
                   >
                     Business Loan
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item
-                    href="#action5"
-                    className="nav_link m-0 pt-0 navItem"
-                    as={Link}
-                    to="/car"
-                  >
-                    Car Loan
-                  </NavDropdown.Item>
-                  <NavDropdown.Item
-                    href="#action5"
-                    className="nav_link m-0 pt-0 navItem"
-                  >
-                    House Loan
-                  </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link as={Link} to="/" className="nav_link text-white">
-                  Features
+                <Nav.Link
+                  as={Link}
+                  to="/calculator"
+                  className="nav_link text-white"
+                >
+                  Loan Calculator
                 </Nav.Link>
                 <Nav.Link as={Link} to="/about" className="nav_link text-white">
                   About Us

@@ -5,6 +5,7 @@ import car from '../images/Car image.png'
 import book from '../images/book.png'
 import house from '../images/House image.png'
 import { Container } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const SecTwo = () => {
   return (
@@ -34,7 +35,9 @@ const SecTwo = () => {
                 officiis? Excepturi ab natus iure. Similique, adipisci totam
                 molestiae laboriosam veniam voluptatem corrupti illo.
                 <br />
-                <span>Click to acquire</span>
+                <Link to="/personal" style={{ textDecoration: 'none' }}>
+                  <span>Click to acquire</span>
+                </Link>{' '}
               </p>
             </div>
           </div>
@@ -54,8 +57,10 @@ const SecTwo = () => {
                 repellendus dignissimos nemo magni cupiditate omnis quae
                 officiis? Excepturi ab natus iure. Similique, adipisci totam
                 molestiae laboriosam veniam voluptatem corrupti illo.
-                <br />
-                <span>Click to acquire</span>
+                <br />{' '}
+                <Link to="/business" style={{ textDecoration: 'none' }}>
+                  <span>Click to acquire</span>
+                </Link>{' '}
               </p>
             </div>
           </div>
@@ -76,7 +81,9 @@ const SecTwo = () => {
                 officiis? Excepturi ab natus iure. Similique, adipisci totam
                 molestiae laboriosam veniam voluptatem corrupti illo.
                 <br />
-                <span>Click to acquire</span>
+                <Link to="/business" style={{ textDecoration: 'none' }}>
+                  <span>Click to acquire</span>
+                </Link>
               </p>
             </div>
           </div>
@@ -97,7 +104,9 @@ const SecTwo = () => {
                 officiis? Excepturi ab natus iure. Similique, adipisci totam
                 molestiae laboriosam veniam voluptatem corrupti illo.
                 <br />
-                <span>Click to acquire</span>
+                <Link to="/business" style={{ textDecoration: 'none' }}>
+                  <span>Click to acquire</span>
+                </Link>
               </p>
             </div>
           </div>

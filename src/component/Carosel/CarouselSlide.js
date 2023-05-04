@@ -3,6 +3,7 @@ import './carousel.css'
 import carOne from '../images/corousel img three.jpg'
 import carTwo from '../images/corousel img two.jpg'
 import carThree from '../images/Four carosel.jpg'
+import { Link } from 'react-router-dom'
 
 function CarouselSlide() {
   return (
@@ -12,7 +13,9 @@ function CarouselSlide() {
         <Carousel.Caption className="Cheack">
           <h1>We give the Best Loan</h1>
           <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          <button>Get Started</button>
+          <Link to="/personal" style={{ textDecoration: 'none' }}>
+            <button>Get Started</button>
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -21,7 +24,9 @@ function CarouselSlide() {
         <Carousel.Caption className="Cheack">
           <h1>We give the Best Loan</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <button>Get Started</button>
+          <Link to="/business" style={{ textDecoration: 'none' }}>
+            <button>Get Started</button>
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
@@ -32,7 +37,9 @@ function CarouselSlide() {
           <p>
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
-          <button>Get Started</button>
+          <Link to="/business" style={{ textDecoration: 'none' }}>
+            <button>Get Started</button>
+          </Link>
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>

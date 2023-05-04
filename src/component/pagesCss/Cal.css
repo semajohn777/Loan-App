@@ -1,0 +1,134 @@
+.cal_div{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    background-color: #85117a;
+}
+
+.cal_div img{
+    width: 100%;
+    height: 100vh;
+    filter: saturate(100%);
+}
+.cal_bg{
+    width: 100%;
+    padding-left: 15%;
+    padding-top: 10%;
+    
+}
+
+.cal_sign_inp{
+    width: 90%;
+    height: 2.5em;
+    color: #000;
+    font-size: 1.1em;
+    padding: 0 1em;
+    border-radius: .3em; 
+}
+.result_div{
+   border: 2px #04b749 solid; 
+   width: 80%;
+   background-color: #04b749;
+   border-radius: .3em;
+   box-shadow: 3px 5px 3px rgba(0,0, 0, 0.5);
+}
+.result_div div{
+    display: flex;
+    justify-content: space-between;
+   padding:.5em .8em;
+}
+.cal_btn{
+    margin-top: .4em;
+    background-color: #04b749;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: .3em .7em;
+    border:1px solid;
+    box-shadow: 3px 5px 3px rgba(0,0, 0, 0.5);
+
+}
+.cal_btn:focus{
+    background-color: #85117a;
+}
+.card{
+    position: relative;
+    
+    transition: 0.5s ease-in-out;
+}
+/* .card:hover{
+    transform: translateY(20px);
+} */
+.card::before{
+content: "";
+position: absolute;
+inset: 0;
+background: linear-gradient(rgba(0, 176,155,0.5), rgba(150, 201,61,1));
+transition:0.5s all;
+z-index: 2;
+opacity: 0;
+}
+
+.total *{
+    color: #85117a;
+   font-weight: bold;
+}
+.green{
+    color: #82fcb1;
+    font-weight: bold;
+}
+.notification_div{
+    display: flex;
+    justify-content: space-between;
+    width: 89%;
+   
+}
+.notification_div *{
+    color: #82fcb1; 
+    font-weight: bold;
+}
+.cal_label{
+
+}
+.cal_btn_div{
+    margin: 1em 0;
+}
+.card:hover:before{
+    opacity: 1;
+}
+         
+/* .card .info{
+position: relative;
+z-index: 3;
+color: #000;
+opacity: 0;
+transform: translateY(30px);
+transition:0.5s all;
+}
+
+.card:hover .info{
+    opacity: 1;
+    transform: translateY(0px);
+} */
+@media screen and (max-width: 663px) {
+    .cal_div img{
+    display: none;
+}
+.card{
+    display: none;
+}
+.cal_div{
+    width: 90%;
+    grid-template-columns: 100%;
+    margin: auto;
+    padding-bottom: 2em;
+  
+}
+/* .cal_btn{
+padding: .6em;
+} */
+}
+@media screen and (max-width:400px) {
+.cal_btn{
+padding: .6em;
+}  
+}

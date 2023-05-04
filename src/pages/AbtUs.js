@@ -41,7 +41,6 @@ const AbtUs = () => {
             adipisicing elit. Sed illo explicabo facere nihil iste accusamus
             voluptas repellendus, officiis, aliquid magni neque sequi quaerat
             illum ex veniam harum suscipit exercitationem nam?{' '}
-            <span>Read More</span>
           </p>
         </div>
       </div>
@@ -59,7 +58,7 @@ const AbtUs = () => {
             numquam. Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Quos repellat sapiente natus ratione illo id tenetur odio obcaecati
             nostrum voluptatibus laboriosam error eligendi deserunt officia, rem
-            dolores ipsum libero temporibus.<span>Read More</span>
+            dolores ipsum libero temporibus.
           </p>
         </div>
         <img src={workWithUs} alt="Work With Us" />
@@ -86,7 +85,6 @@ const AbtUs = () => {
             adipisicing elit. At, eos quod? Rem enim est repellat veniam
             consequuntur voluptatum blanditiis vitae, quibusdam consequatur. Et
             recusandae eveniet perferendis assumenda! Repellat, quisquam eum.
-            <span>Read More</span>
           </p>
         </div>
       </div>
