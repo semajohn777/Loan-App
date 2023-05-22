@@ -37,6 +37,7 @@
     font-weight: bold;
     cursor: pointer;
 }
+
 @media screen and (max-width: 1024px) {
    .secTwo_subSec_grid{
     align-items: center;

@@ -72,6 +72,17 @@ background-color: #EC2AD9;
 .colorChange:hover *{
     color: #fff;
 }
+
+.navbar-nav .show>.nav-link{
+    color: white;
+    font-size: bold;
+}
+
+
+
+.dropdown-menu[data-bs-popper]{ left: -2.5em; }
+   
+
 @media screen and (max-width: 1024px) {
     .offcanvas{
         text-align: center;
@@ -84,11 +95,14 @@ background-color: #EC2AD9;
     }
 }
 @media screen and (max-width: 600px) {
-
 .btn-close{
     color: #fff;
     background-color: #fff;
-} 
+}  
+/* .navbar-nav{
+    display: flex;
+    margin: auto;
+} */
 }
 
 /* .show{

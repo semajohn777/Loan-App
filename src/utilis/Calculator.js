@@ -1,31 +1,11 @@
 import React from 'react'
 import '../component/pagesCss/Cal.css'
 import { useState } from 'react'
-// import { useReducer } from 'react'
 
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'day':
-//       return { dayReducerFunc: true }
-//     case 'month':
-//       return { monthReducerFunc: true }
-//     case 'year':
-//       return { yearReducerFunc: true }
-//     default:
-//       return state
-//   }
-// }
 const Calculator = (props) => {
   const [btnFunc, setBtnFunc] = useState(false)
   const [monthFunc, setMonthFunc] = useState(false)
   const [yearFunc, setYearFunc] = useState(false)
-  // const [state, dispatch] = useReducer(reducer, {
-  //   monthReducerFunc: false,
-  //   dayReducerFunc: false,
-  //   yearReducerFunc: false,
-  // })
-  // const [min, setMin] = useState(0)
-  // const max = 100
 
   const {
     setAmount,
@@ -47,7 +27,6 @@ const Calculator = (props) => {
     setValid(false)
   }
   const interestOCH = (e) => {
-    // const value = Math.max(min, Math.min(max, Number(e.target.value)))
     setInterest(e.target.value)
     setValid(false)
   }
@@ -79,34 +58,9 @@ const Calculator = (props) => {
     setMonthFunc(false)
     setYearFunc(true)
   }
-  // const dayHandle = () => {
-  //   setBtnFunc(true)
-  //   setMonthFunc(false)
-  //   setYearFunc(false)
-  // }
-  // const monthHandle = () => {
-  //   dispatch({ type: 'month' })
-  //   // setBtnFunc(false)
-  //   // setMonthFunc(true)
-  //   // setYearFunc(false)
-  // }
-  // const yearHandle = () => {
-  //   setBtnFunc(false)
-  //   setMonthFunc(false)
-  //   setYearFunc(true)
-  // }
 
   return (
     <div>
-      {' '}
-      {/* {add && (
-        <div>
-          <p>Amount:{Number(amount)}</p>
-          <p>Interest: {add.interest}</p>
-          <p>Year: {year}</p>
-          <p>{add}</p>
-        </div>
-      )} */}
       {!add && (
         <div>
           <h1 className="">Calculator</h1>
@@ -124,7 +78,7 @@ const Calculator = (props) => {
             </div>
           </div>
           <div className="notification_div">
-            <div>1000</div>
+            <div>500</div>
             <div>3,000,000</div>
           </div>
           <div>
@@ -140,7 +94,7 @@ const Calculator = (props) => {
             </div>
           </div>
           <div className="notification_div">
-            <div>10%</div>
+            <div>5%</div>
             <div>100%</div>
           </div>
           <i>
@@ -159,65 +113,7 @@ const Calculator = (props) => {
               Year(s)
             </button>
           </div>
-          {/* {!state.yearReducerFunc === false && (
-            <div>
-              <label htmlFor="">Year</label>
-              <div>
-                <input
-                  type="number"
-                  value={year || ''}
-                  onChange={yearOCH}
-                  style={{ color: 'black' }}
-                  className="cal_sign_inp"
-                  // max={`5${'year'}`}
-                  max="5"
-                />
 
-                <div className="notification_div">
-                  <div>0</div>
-                  <div>5 Years</div>
-                </div>
-              </div>
-            </div>
-          )}
-          {!state.dayReducerFunc === false && (
-            <div>
-              <label htmlFor="">Day(s)</label>
-              <div>
-                <input
-                  type="number"
-                  value={day || ''}
-                  onChange={dayOCH}
-                  style={{ color: 'black' }}
-                  className="cal_sign_inp"
-                  max="1825"
-                />
-                <div className="notification_div">
-                  <div>0</div>
-                  <div>1,825 Days</div>
-                </div>
-              </div>
-            </div>
-          )}
-          {!state.monthReducerFunc === false && (
-            <div>
-              <label htmlFor="">Months</label>
-              <div>
-                <input
-                  type="number"
-                  value={month || ''}
-                  onChange={monthOCH}
-                  style={{ color: 'black' }}
-                  className="cal_sign_inp"
-                  max="60"
-                />
-                <div className="notification_div">
-                  <div>0</div>
-                  <div>60 Months</div>
-                </div>
-              </div>
-            </div>
-          )} */}
           {yearFunc && (
             <div>
               <label htmlFor="">Year</label>
@@ -228,7 +124,6 @@ const Calculator = (props) => {
                   onChange={yearOCH}
                   style={{ color: 'black' }}
                   className="cal_sign_inp"
-                  // max={`5${'year'}`}
                   min="0"
                   max="5"
                 />
@@ -280,21 +175,6 @@ const Calculator = (props) => {
               </div>
             </div>
           )}
-
-          {/* {!state.monthReducerFunc === false && (
-            <div>
-              <label htmlFor="">Months</label>
-              <div>
-                <input
-                  type="number"
-                  // value={month || ''}
-                  // onChange={yearOCH}
-                  style={{ color: 'black' }}
-                  className="cal_sign_inp"
-                />
-              </div>
-            </div>
-          )} */}
         </div>
       )}
     </div>

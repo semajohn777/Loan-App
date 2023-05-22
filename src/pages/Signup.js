@@ -6,6 +6,7 @@ import { BiShow } from 'react-icons/bi'
 import { BiHide } from 'react-icons/bi'
 
 import { ToastContainer, toast } from 'react-toastify'
+import UseSignUp from '../component/hooks/UseSignUp'
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState('')
@@ -13,7 +14,16 @@ const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [CPassword, setCPassword] = useState('')
-  const [showPwd, setshowPwd] = useState({ inputErr: false, show: 'password' })
+  const { SignUp, errorState } = UseSignUp()
+  const { error, dataSuccessfull } = errorState
+  // const { error, loading, dataSuccessfull } = errorState
+  const [showPwd, setshowPwd] = useState({
+    inputErr: false,
+    show: 'password',
+  })
+  console.log({ errorState })
+  console.log(errorState.error)
+  console.log(dataSuccessfull)
 
   const firstNameOCH = (e) => {
     setFirstName(e.target.value)
@@ -37,7 +47,7 @@ const SignUp = () => {
       setshowPwd({ show: 'password' })
     }
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (
       userName.trim().length === 0 ||
@@ -52,14 +62,14 @@ const SignUp = () => {
     }
     if (password !== CPassword) {
       setshowPwd({ inputErr: toast.warning('Password do not match !') })
-    } else {
-      console.log({ firstName, userName, email, password, CPassword })
-      setCPassword('')
-      setEmail('')
-      setFirstName('')
-      setUserName('')
-      setPassword('')
+      return
     }
+
+    // if (SignUp) {
+    // SignUp(firstName, userName, email, password)
+    //   return
+    // }
+    await SignUp(firstName, userName, email, password)
   }
 
   return (
@@ -127,7 +137,7 @@ const SignUp = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="comfirmPassword">Comfirm Password</label>
+            <label htmlFor="comfirmPassword">Confirm Password</label>
             <div className="icons_ctrl">
               <input
                 type={showPwd.show}
@@ -148,7 +158,19 @@ const SignUp = () => {
         </div>
 
         <button className="sign_btn">Sign Up</button>
+
         {showPwd.inputErr && <ToastContainer />}
+        {/* {errorState.error && <p>{errorState.error}</p>} */}
+        {error && (
+          <p>
+            <ToastContainer />
+          </p>
+        )}
+        {dataSuccessfull && (
+          <p>
+            <ToastContainer />
+          </p>
+        )}
         <p>
           Already Have an account? <Link to="/signin">Login</Link> instead
         </p>

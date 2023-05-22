@@ -33,14 +33,14 @@ const NextOfKin = (props) => {
     setNextGender(e.target.value)
   }
   const nextRelationChangeHandler = (e) => {
-    setNextRelation(e.target.value)(false)
+    setNextRelation(e.target.value)
   }
   const nextResidentialAddressOnChangeHandler = (e) => {
     setNextResidentialAddress(e.target.value)
   }
   return (
     <div>
-      <h1 className="text-center p-0 m-0">Next Of Kin</h1>
+      <h4 className="text-center p-0 m-0">Next Of Kin Details</h4>
       <fieldset className="sign_Up_line mt-1"></fieldset>
       <div className="name_inp">
         <div>
@@ -76,6 +76,18 @@ const NextOfKin = (props) => {
             value={nextPhoneNo}
             onChange={nextPhoneNoOnChangeHandler}
           />
+        </div>
+        <div>
+          <label htmlFor="residential">Address</label>
+          <div>
+            <input
+              type="text"
+              id="residential"
+              className="sign_inp"
+              value={nextResidentialAddress}
+              onChange={nextResidentialAddressOnChangeHandler}
+            />
+          </div>
         </div>
         <div>
           <label htmlFor="gender">Gender</label>
@@ -114,18 +126,6 @@ const NextOfKin = (props) => {
             <option value="Sister">Sister</option>
             <option value="Uncle">Uncle</option>
           </select>
-        </div>
-        <div>
-          <label htmlFor="residential">Address</label>
-          <div>
-            <input
-              type="text"
-              id="residential"
-              className="sign_inp"
-              value={nextResidentialAddress}
-              onChange={nextResidentialAddressOnChangeHandler}
-            />
-          </div>
         </div>
       </div>
     </div>

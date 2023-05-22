@@ -1,0 +1,66 @@
+/* .odal{
+    background-color: brown;
+    z-index: 3;
+    position: absolute;
+    top: 10em;
+    padding: 1em;
+} */
+.odal {
+    position: fixed;
+    top: 30vh;
+    left: 15%;
+    width: 70%;
+    background-color: #85117a;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30;
+    animation: slide-down 300ms ease-out forwards;
+}
+
+.odal h1{
+    color: #fff;
+
+}
+.sign_btn{
+    width: 20%;
+    margin-top: .6em;
+    background-color: #04b749;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: .3em 0;
+    box-shadow: 3px 5px 3px rgba(0,0, 0, 0.5);
+}
+.btn_flex{
+    display: flex;
+    justify-content: space-between;
+}
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.90);
+    /* background-color: black; */
+}
+@media (min-width: 768px) {
+    .modal {
+        width: 40rem;
+        left: calc(50% - 20rem);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -11,12 +11,9 @@ const BusinessForm = (props) => {
     nationality,
     gender,
     status,
-    residentialAddress,
     currAddress,
     office,
-    officeId,
     explanation,
-    // passport,
   } = props.businessFormValue
   const {
     setUserSurname,
@@ -28,10 +25,10 @@ const BusinessForm = (props) => {
     setNationality,
     setGender,
     setStatus,
-    setResidentialAddress,
+
     setCurrAddress,
     setOffice,
-    setOfficeId,
+
     setExplanation,
     // setPassport,
     // setValid,
@@ -75,10 +72,7 @@ const BusinessForm = (props) => {
     setStatus(e.target.value)
     // setValid(false)
   }
-  const residentialAddressOCH = (e) => {
-    setResidentialAddress(e.target.value)
-    // setValid(false)
-  }
+
   const currAddressOCH = (e) => {
     setCurrAddress(e.target.value)
     // setValid(false)
@@ -87,10 +81,7 @@ const BusinessForm = (props) => {
     setOffice(e.target.value)
     // setValid(false)
   }
-  const officeIdOCH = (e) => {
-    setOfficeId(e.target.value)
-    // setValid(false)
-  }
+
   const explanationOCH = (e) => {
     setExplanation(e.target.value)
     // setValid(false)
@@ -107,7 +98,8 @@ const BusinessForm = (props) => {
 
   return (
     <div>
-      <h1 className="text-center p-0 m-0">Busines Loan</h1>
+      <h1 className="text-center p-0 m-0">Business Loan</h1>
+      <h4 className="text-center p-0 m-0">Business Details</h4>
       <fieldset className="sign_Up_line mt-1"></fieldset>
       <div className="name_inp">
         <div>
@@ -241,20 +233,7 @@ const BusinessForm = (props) => {
           </select>
         </div>
         <div>
-          <label htmlFor="residential">Residential Address</label>
-          <div>
-            <input
-              type="text"
-              id="residential"
-              className="sign_inp"
-              value={residentialAddress}
-              onChange={residentialAddressOCH}
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="current">Current Address</label>
+          <label htmlFor="current">Home Address</label>
           <div>
             <input
               type="text"
@@ -275,19 +254,6 @@ const BusinessForm = (props) => {
               className="sign_inp"
               value={office}
               onChange={officeOCH}
-              required
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="officeId">Office Identification</label>
-          <div>
-            <input
-              type="text"
-              id="officeId"
-              className="sign_inp"
-              value={officeId}
-              onChange={officeIdOCH}
               required
             />
           </div>

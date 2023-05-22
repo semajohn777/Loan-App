@@ -40,15 +40,14 @@ const LoanCalculator = () => {
       setValid(toast.warning('Please fill all fields with the right values !'))
       return
     }
-
+    const MONTH = month > 1 ? month / month : month
+    console.log(MONTH)
     const add =
-      (Number(amount) * Number(interest) * Number(year || day || month)) / 100
-    console.log(add, month, year)
+      (Number(amount) *
+        Number(interest) *
+        Number(year * 3 || day / 30 || MONTH)) /
+      100
     setAdd(add)
-    // setAdd((add, amount) => {
-    //   console.log(add, amount)
-    // })
-    console.log(amount, interest)
   }
   const prevHandler = () => {
     setAmount('')
@@ -65,14 +64,6 @@ const LoanCalculator = () => {
       <div className="cal_div">
         <div className="card">
           <img src={photo} alt="" />
-          {/* <div className="info">
-            <h6>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores
-              tenetur cupiditate totam ea sit et fugiat voluptates excepturi sed
-              pariatur ut, similique expedita velit itaque cumque nostrum
-              accusamus cum ullam.
-            </h6>
-          </div> */}
         </div>
         <div className="cal_bg">
           {add && (
@@ -80,32 +71,40 @@ const LoanCalculator = () => {
               <h2>Details of your proposed loan</h2>
               <div className="result_div">
                 <div>
-                  <h4>Amount Considered: </h4> <h4>N{amount}</h4>
+                  <h5>Amount Considered: </h5> <h5>N{amount}</h5>
                 </div>
-                <div>
-                  <h4>Rate to be paid at </h4> <h4>{interest}%</h4>
-                </div>
-                {/* <p> {month || day}</p> */}
-                {year && (
+                {day || month ? (
                   <div>
-                    <h4> In the period </h4> <h4>{year} Year</h4>{' '}
+                    <h5>Monthly Interest </h5> <h5>N {Math.round(add)}</h5>
+                  </div>
+                ) : (
+                  <div>
+                    <h5>Yearly Interest </h5> <h5>N {Math.round(add)}</h5>
                   </div>
                 )}
-                {month && (
-                  <div>
-                    {' '}
-                    <h4> In the period </h4> <h4>{month} Month</h4>{' '}
+                {day || month ? (
+                  <div className="total">
+                    <h3>Total Monthly Returned </h3>
+                    <h3>N{Number(amount) + Number(Math.round(add))}</h3>
+                  </div>
+                ) : (
+                  <div className="total">
+                    <h3>Total Yearly Returned </h3>
+                    <h3>N{Number(amount) + Number(Math.round(add))}</h3>
                   </div>
                 )}
-                {day && (
+                {month > 1 && (
                   <div>
-                    <h4> In the period </h4> <h4>{day} Days</h4>{' '}
+                    <h3>Total in {month} month period</h3>{' '}
+                    <h3>N{Number(amount) + Number(Math.round(add * month))}</h3>
                   </div>
                 )}
-                <div className="total">
-                  <h2>Total Interest </h2>
-                  <h2>N{add}</h2>
-                </div>{' '}
+                {year > 1 && (
+                  <div>
+                    <h3>Total in {year} year period</h3>{' '}
+                    <h3>N{Number(amount) + Number(Math.round(add * month))}</h3>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -123,10 +122,7 @@ const LoanCalculator = () => {
             )}
           </form>
 
-          {valid && (
-            // <p>Please fill all fields with the right values</p>
-            <ToastContainer />
-          )}
+          {valid && <ToastContainer />}
         </div>{' '}
       </div>
     </div>

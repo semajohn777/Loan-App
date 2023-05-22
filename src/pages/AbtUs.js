@@ -17,8 +17,6 @@ import airlogo from '../component/images/Airbnb_Logo_.png'
 import capital from '../component/images/capital-one-logo.png'
 
 const AbtUs = () => {
-  const { data } = AbtUsDataItems
-  console.log(data)
   return (
     <div className="abt_us">
       {/* <div>{data.map() }</div> */}

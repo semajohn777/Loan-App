@@ -1,11 +1,16 @@
-import React, { useReducer, useState } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import Footer from '../component/footer/Footer'
 import '../component/pagesCss/form.css'
 // import { Link } from 'react-router-dom'
 import '../component/pagesCss/loan.css'
 import NextOfKin from '../component/nextOfKin/NextOfKin'
-import Grantor from '../component/nextOfKin/Grantor'
 import PersonalLoanForm from '../component/Form/PersonalLoanForm'
+import { ToastContainer, toast } from 'react-toastify'
+import PersonalGrantor from '../component/nextOfKin/PersonalGrantor'
+
+import Modal from '../utilis/Modal'
+import { useNavigate } from 'react-router-dom'
+import { UserCreatedContext } from '../component/context/Context'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -24,6 +29,20 @@ const PersonalLoan = () => {
   const [valid, setValid] = useState(false)
   const [submitValid, setSubmitValid] = useState(false)
   const [emailValidation, setEmailValidation] = useState('')
+  const [showModal, setShowModal] = useState(false)
+  const [errorState, setErrorState] = useState({
+    error: null,
+    emailCompare: null,
+    data: [],
+    dataSuccessfull: false,
+  })
+
+  const { state: ctxState } = useContext(UserCreatedContext)
+  const { userInfo } = ctxState
+
+  const navigate = useNavigate()
+
+  // const [dataSuccessfull, setDataSuccessfull] = useState('')
   // business input
   const [userSurname, setUserSurname] = useState('')
   const [userFName, setUserFName] = useState('')
@@ -51,16 +70,17 @@ const PersonalLoan = () => {
   const [guarantorSurname, setGuarantorSurname] = useState('')
   const [guarantorFName, setGuarantorFName] = useState('')
   const [guarantorPhoneNo, setGuarantorPhoneNo] = useState('')
-  const [guarantorPositonHeld, setGuarantorPositonHeld] = useState('')
-  const [guarantorGender, setGuarantorGender] = useState()
   const [guarantorRelation, setGuarantorRelation] = useState('')
-  const [guarantorBName, setGuarantorBName] = useState('')
+  const [occupation, setOccupation] = useState('')
   const [
     guarantorResidentialAddress,
     setGuarantorResidentialAddress,
   ] = useState('')
-  const [guarantorOficeAddress, setGuarantorOficeAddress] = useState('')
-  const [guarantorPassport, setGuarantorPassport] = useState()
+  const { error, dataSuccessfull, emailCompare } = errorState
+  const setShowModalHandler = () => {
+    setShowModal(false)
+    navigate('/')
+  }
 
   const businessFormValue = {
     userSurname,
@@ -121,27 +141,18 @@ const PersonalLoan = () => {
     guarantorSurname,
     guarantorFName,
     guarantorPhoneNo,
-    guarantorPositonHeld,
-    guarantorGender,
     guarantorRelation,
     guarantorResidentialAddress,
-    guarantorPassport,
-    guarantorOficeAddress,
-    guarantorBName,
+    occupation,
   }
 
   const guarantorFormValueFunc = {
     setGuarantorSurname,
     setGuarantorFName,
     setGuarantorPhoneNo,
-    setGuarantorPositonHeld,
-    setGuarantorGender,
     setGuarantorRelation,
     setGuarantorResidentialAddress,
-    setSubmitValid,
-    setGuarantorOficeAddress,
-    setGuarantorBName,
-    setGuarantorPassport,
+    setOccupation,
   }
 
   const [state, dispatch] = useReducer(reducer, {
@@ -151,7 +162,15 @@ const PersonalLoan = () => {
 
   const handleIncrement = () => {
     if (!email.includes(`@`) || !email.includes('.')) {
-      setEmailValidation(true)
+      setEmailValidation(toast.warning('Pls fill a proper email details'))
+      return
+    }
+    if (userInfo.email !== email) {
+      setErrorState({
+        emailCompare: toast.warning(
+          'Signup Email do not match with the filled Email',
+        ),
+      })
       return
     }
     if (
@@ -168,7 +187,7 @@ const PersonalLoan = () => {
       currAddress.trim().length === 0 ||
       explanation.trim().length === 0
     ) {
-      setValid(true)
+      setValid(toast.error('Please fill all input'))
       // dispatch({ type: 'ErrorMsg' })
     } else {
       dispatch({ type: 'Increment' })
@@ -177,7 +196,9 @@ const PersonalLoan = () => {
   const handleDecrement = () => {
     dispatch({ type: 'Decrement' })
   }
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
     if (
       nextSurname.trim().length === 0 ||
       nextFName.trim().length === 0 ||
@@ -188,23 +209,87 @@ const PersonalLoan = () => {
       guarantorSurname.trim().length === 0 ||
       guarantorFName.trim().length === 0 ||
       guarantorPhoneNo.trim().length === 0 ||
-      guarantorPositonHeld.trim().length === 0 ||
-      guarantorGender.trim().length === 0 ||
       guarantorRelation.trim().length === 0 ||
       guarantorResidentialAddress.trim().length === 0 ||
-      guarantorOficeAddress.trim().length === 0 ||
-      guarantorBName.trim().length === 0
+      occupation.trim().length === 0
     ) {
-      setSubmitValid(true)
-    } else {
-      alert('you have successfully Aquire a loan')
+      setSubmitValid(
+        toast.warning(
+          'Pls Ensure to fill all input in the of next of Kin and the Guarantor Form',
+        ),
+      )
+      return
     }
-    console.log(businessFormValue, nextFormValue, guarantorFormValue)
+    const response = await fetch('http://localhost:5000/users/personal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        NIN,
+        currAddress,
+        email,
+        explanation,
+        gender,
+        nationality,
+        residentialAddress,
+        status,
+        userFName,
+        userMName,
+        userPhoneNo,
+        userSurname,
+        guarantorSurname,
+        guarantorFName,
+        guarantorPhoneNo,
+        guarantorRelation,
+        guarantorResidentialAddress,
+        occupation,
+        nextSurname,
+        nextFName,
+        nextPhoneNo,
+        nextGender,
+        nextRelation,
+        nextResidentialAddress,
+      }),
+    })
+    const json = await response.json()
+    if (!response.ok) {
+      setErrorState({ error: toast.warning(json.error) })
+    } else {
+      dispatch({ type: 'PERSONAL_INFO', payload: json })
+      setErrorState({ dataSuccessfull: toast.success(json.message) })
+      setShowModal(true)
+    }
+    setUserSurname('')
+    setUserFName('')
+    setUserMName('')
+    setUserPhoneNo('')
+    setEmail('')
+    setNIN('')
+    setNationality('')
+    setGender('')
+    setStatus('')
+    setCurrAddress('')
+    setExplanation('')
+    setNextSurname('')
+    setNextFName('')
+    setNextPhoneNo('')
+    setNextGender('')
+    setNextRelation('')
+    setNextResidentialAddress('')
+    setGuarantorSurname('')
+    setGuarantorFName('')
+    setGuarantorPhoneNo('')
+    setGuarantorRelation('')
+    setGuarantorResidentialAddress('')
+    setOccupation('')
   }
-
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/signin')
+    }
+  }, [userInfo, navigate])
   return (
     <div>
-      <div className="brown_div Form_page">
+      <form onSubmit={handleSubmit} className="brown_div Form_page">
         {state.count === 1 ? (
           <PersonalLoanForm
             businessFormValue={businessFormValue}
@@ -216,40 +301,45 @@ const PersonalLoan = () => {
             nextFormValueFunc={nextFormValueFunc}
           />
         ) : (
-          <Grantor
+          <PersonalGrantor
             guarantorFormValue={guarantorFormValue}
             guarantorFormValueFunc={guarantorFormValueFunc}
           />
         )}
         <div className="Increase_btn">
           {state.count > 1 && (
-            <button className="sign_btn" onClick={handleDecrement}>
+            <button
+              type="button"
+              className="sign_btn"
+              onClick={handleDecrement}
+            >
               Back
             </button>
           )}
 
           {state.count < 3 ? (
-            <button className="sign_btn " onClick={handleIncrement}>
+            <button
+              type="button"
+              className="sign_btn "
+              onClick={handleIncrement}
+            >
               Next
             </button>
           ) : (
-            <button className="sign_btn hihh" onClick={handleSubmit}>
+            <button type="submit" className="sign_btn">
               Submit
             </button>
           )}
         </div>{' '}
-        {valid && <p className="error">Pls fill all input</p>}
-        {submitValid && (
-          <p className="error">
-            Pls Ensure to fill all input in the of next of Kin and the Guarantor
-            Form
-          </p>
-        )}
+        {valid && <ToastContainer />}
+        {submitValid && <ToastContainer />}
+        {emailCompare && <ToastContainer />}
         {/* {state.error === false && <p className="error">plse erorrr</p>} */}
-        {emailValidation && (
-          <p className="error">Pls fill a proper Email Details</p>
-        )}
-      </div>
+        {emailValidation && <ToastContainer />}
+        {error && <ToastContainer />}
+        {dataSuccessfull && <ToastContainer />}
+        {showModal && <Modal show={setShowModalHandler} />}
+      </form>
       <Footer />
     </div>
   )

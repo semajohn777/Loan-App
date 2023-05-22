@@ -4,11 +4,14 @@ import '../component/pagesCss/form.css'
 import { Link } from 'react-router-dom'
 import { BiHide, BiShow } from 'react-icons/bi'
 import { ToastContainer, toast } from 'react-toastify'
+import UseSignIn from '../component/hooks/UseSignIn'
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPwd, setshowPwd] = useState({ inputErr: false, show: 'password' })
+  const { SignIn, errorState } = UseSignIn()
+  const { error, loading, dataSuccessfull } = errorState
 
   const emailOCH = (e) => {
     setEmail(e.target.value)
@@ -24,7 +27,7 @@ const SignIn = () => {
       setshowPwd({ show: 'password' })
     }
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if (email.trim().length === 0 || password.trim().length === 0) {
@@ -46,6 +49,7 @@ const SignIn = () => {
       return
     }
     console.log({ email, password })
+    await SignIn(email, password)
 
     setEmail('')
 
@@ -92,6 +96,16 @@ const SignIn = () => {
         </div>
         <button className="sign_btn">Sign In</button>
         {showPwd.inputErr && <ToastContainer />}
+        {error && (
+          <p>
+            <ToastContainer />
+          </p>
+        )}
+        {dataSuccessfull && (
+          <p>
+            <ToastContainer />
+          </p>
+        )}
         <p>
           New User? <Link to="/signup">Sign Up</Link> instead
         </p>

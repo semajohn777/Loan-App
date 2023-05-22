@@ -1,26 +1,21 @@
 import React from 'react'
 
-const Grantor = (props) => {
+const PersonalGrantor = (props) => {
   const {
     guarantorSurname,
     guarantorFName,
     guarantorPhoneNo,
-    guarantorPositonHeld,
     guarantorRelation,
     guarantorResidentialAddress,
-    guarantorOficeAddress,
-    guarantorBName,
+    occupation,
   } = props.guarantorFormValue
   const {
     setGuarantorSurname,
     setGuarantorFName,
     setGuarantorPhoneNo,
-    setGuarantorPositonHeld,
     setGuarantorRelation,
     setGuarantorResidentialAddress,
-    setGuarantorOficeAddress,
-    setGuarantorBName,
-
+    setOccupation,
     // setGuarantorPassport,
   } = props.guarantorFormValueFunc
 
@@ -32,16 +27,8 @@ const Grantor = (props) => {
     setGuarantorFName(e.target.value)
   }
 
-  const guarantorBNameOCH = (e) => {
-    setGuarantorBName(e.target.value)
-  }
-
   const guarantorPhoneNoOCH = (e) => {
     setGuarantorPhoneNo(e.target.value)
-  }
-
-  const guarantorPositonHeldOCH = (e) => {
-    setGuarantorPositonHeld(e.target.value)
   }
 
   const guarantorRelationOCH = (e) => {
@@ -51,9 +38,8 @@ const Grantor = (props) => {
   const guarantorResidentialAddressOCH = (e) => {
     setGuarantorResidentialAddress(e.target.value)
   }
-
-  const guarantorOficeAddressOCH = (e) => {
-    setGuarantorOficeAddress(e.target.value)
+  const occupationOCH = (e) => {
+    setOccupation(e.target.value)
   }
 
   // const guarantorPassportOCH = (e) => {
@@ -64,8 +50,7 @@ const Grantor = (props) => {
 
   return (
     <div>
-      <h1 className="text-center p-0 m-0">Business Loan</h1>
-      <h4 className="text-center p-0 m-0">Guarantor Details</h4>
+      <h1 className="text-center p-0 m-0">Guarantor Details</h1>
       <fieldset className="sign_Up_line mt-1"></fieldset>
       <div className="name_inp">
         <div>
@@ -102,30 +87,6 @@ const Grantor = (props) => {
             onChange={guarantorPhoneNoOCH}
           />
         </div>
-        <div>
-          <label htmlFor="officeId">Business Name</label>
-          <div>
-            <input
-              type="text"
-              id="officeId"
-              className="sign_inp"
-              value={guarantorBName}
-              onChange={guarantorBNameOCH}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="position">Position</label>
-          <div>
-            <input
-              type="text"
-              id="position"
-              className="sign_inp"
-              value={guarantorPositonHeld}
-              onChange={guarantorPositonHeldOCH}
-            />
-          </div>
-        </div>
 
         <div>
           <label htmlFor="relation">Relationship</label>
@@ -149,7 +110,7 @@ const Grantor = (props) => {
           </select>
         </div>
         <div>
-          <label htmlFor="residential">Address</label>
+          <label htmlFor="residential">Residential Address</label>
           <div>
             <input
               type="text"
@@ -161,34 +122,20 @@ const Grantor = (props) => {
           </div>
         </div>
         <div>
-          <label htmlFor="office">Office Address</label>
+          <label htmlFor="occupation">Occupation</label>
           <div>
             <input
               type="text"
-              id="office"
+              id="occupation"
               className="sign_inp"
-              value={guarantorOficeAddress}
-              onChange={guarantorOficeAddressOCH}
+              value={occupation}
+              onChange={occupationOCH}
             />
           </div>
         </div>
-        <div className="name_inp"></div>
-        {/* 
-        <div>
-          <label htmlFor="officeId">Guarantor Passport</label>
-          <div>
-            <input
-              type="file"
-              id="officeId"
-              className="sign_inp"
-              required
-              onChange={guarantorPassportOCH}
-            />
-          </div>
-        </div> */}
       </div>{' '}
     </div>
   )
 }
 
-export default Grantor
+export default PersonalGrantor

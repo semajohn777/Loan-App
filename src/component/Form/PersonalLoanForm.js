@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { UserCreatedContext } from '../context/Context'
 
 const PersonalLoanForm = (props) => {
+  const navigate = useNavigate()
+
+  const { state: ctxState } = useContext(UserCreatedContext)
+  const { userInfo } = ctxState
   const {
     userSurname,
     userFName,
@@ -84,10 +90,15 @@ const PersonalLoanForm = (props) => {
     setExplanation(e.target.value)
     setValid(false)
   }
-
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/signin')
+    }
+  }, [userInfo, navigate])
   return (
     <div>
       <h1 className="text-center p-0 m-0">Personal Loan</h1>
+      <h4 className="text-center p-0 m-0">My Details</h4>
       <fieldset className="sign_Up_line mt-1"></fieldset>
       <div className="name_inp">
         <div>
